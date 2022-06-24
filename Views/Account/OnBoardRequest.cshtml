@@ -1,0 +1,140 @@
+﻿@model HRMS.Models.RequestModel
+
+@{
+    ViewData["Title"] = "OnBoardRequest";
+}
+<html>
+    <head>
+       
+         <script src="~/Scripts/onboardingt.js" asp-append-version="true"></script>
+    </head>
+    <body>
+
+
+
+<hr />
+  <form asp-controller="Account" asp-action="OnBoardRequest" method="post" class="form-horizontal" role="form">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+     <div class="col-sm-10 mx-auto py-4">
+       <div class="card">
+            <div class="card-header bg-warning text-uppercase text-white">
+                    <h4>OnBoardRequest</h4>
+                </div>
+          <div class="card-body">
+          <form enctype="multipart/form-data" asp-action="New">
+          <div class="row">
+              <div class="col-sm-6">
+                   <div class="form-group">
+                     <label asp-for="Firstname" class="control-label"></label>
+                     <input asp-for="Firstname" id="Fname" class="form-control" />
+                      <span asp-validation-for="Firstname" class="text-danger"></span>
+                   </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                    <label asp-for="Lastname" class="control-label"></label>
+                    <input asp-for="Lastname" id="Lname" class="form-control" />
+                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+           <div class="row">
+              <div class="col-sm-6">
+                   <div class="form-group">
+                     <label asp-for="Email" class="control-label"></label>
+                     <input asp-for="Email"  id="Emaildb" class="form-control" />
+                     <span asp-validation-for="Email" class="text-danger"></span>
+                   </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                     <label asp-for="Mobile" class="control-label"></label>
+                      <input asp-for="Mobile" id="Mobile" class="form-control" />
+                      <span asp-validation-for="Mobile" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+           <div class="row">
+              <div class="col-sm-6">
+                   <div class="form-group">
+                    <label asp-for="Doj" class="control-label"></label>
+                     <input asp-for="Doj" id="Doj" class="datepicker form-control" min="2021-01-01" />
+                     <span asp-validation-for="Doj" class="text-danger"></span>
+                   </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                     <label asp-for="BUnitID" class="control-label"></label>
+                     @Html.HiddenFor(m => m.BUnitID, new { @id = "Bnid" })
+                      @Html.DropDownListFor(m => m.BUnitID, (SelectList)ViewBag.bunit, "Choose a Businessunit", new { @class = "form-control",@id="bunit" })
+                   
+                
+                      <span asp-validation-for="BUnitID" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+            <div class="row">
+              <div class="col-sm-6">
+                   <div class="form-group">
+                      <label asp-for="DeptId" class="control-label"></label>
+                       @Html.HiddenFor(m => m.DeptId, new { @id = "DEid" })
+                       @Html.DropDownListFor(m => m.DeptId, (SelectList)ViewBag.depts, "Choose a Department", new { @class = "form-control",@id="dept" })
+
+                    
+                       <span asp-validation-for="DeptId" class="text-danger"></span>
+                   </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                     <label asp-for="SDeptID" class="control-label"></label>
+                      @Html.HiddenFor(m => m.SDeptID, new { @id = "SDid" })
+                       @Html.DropDownListFor(m => m.SDeptID, Enumerable.Empty<SelectListItem>(), "Choose a SubDepartment", new {@id="sdept", @class = "form-control"})
+                
+                        <span asp-validation-for="SDeptID" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+        <div class="row">
+              <div class="col-sm-6">
+                   <div class="form-group">
+                       <label asp-for="Designation" class="control-label"></label>
+                         @Html.HiddenFor(m => m.Designation, new { @id = "Design" })
+                      <input asp-for="Designation" class="form-control" id="designation" />
+                       <span asp-validation-for="Designation" class="text-danger"></span>
+                   </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="form-group">
+                    <label asp-for="RMID" class="control-label"></label>
+                     @Html.HiddenFor(m => m.RMID, new { @id = "Rid" })
+                      @Html.DropDownListFor(m => m.RMID, (SelectList)ViewBag.rMs, "Choose a ReportingManager", new { @class = "form-control",@id="reporting" })
+                 
+                     <span asp-validation-for="RMID" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+     
+        
+           
+            <div class="form-group">
+                <input type="submit" id="Buttton" value="Create" class="btn btn-primary" />
+                 <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Admin Dashboard</a>
+            </div>
+          </form>
+          </div>
+         </div>
+       </div>  
+      </form>
+    <div class="row">
+       <div class="col-sm-4"></div>
+        
+         <div class="col-sm-4">
+              <a asp-action="OnDashboard" asp-controller="Account" class="btn btn-primary">Go To Dashboard</a>
+         </div>
+         <div class="col-sm-4"></div>
+   </div>
+
+ </body>
+</html>
+
+

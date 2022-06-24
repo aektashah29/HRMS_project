@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HRMS_project.Models.Dept>
+
+
+<html>
+    <head>
+<title>DepartmentUnits</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="~/css/bunit.css" />
+  
+    </head>
+
+<body>
+
+     <div class="card">
+               <div class="card-header bg-danger text-uppercase text-white">
+                    <h4 class="text-center"> Departments </h4>
+                    <form asp-controller="Admin" asp-action="DepartmentUnits" method="get">
+                       <input type="text" placeholder="Search.." name="search">
+                     <input type="submit" value="Search" class="btn btn-primary">
+                    </form>
+                 <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Admin Dashboard</a>
+                </div>
+     <div class="card-body">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th> <a asp-action="DEPARTMENTS" asp-controller="Admin"  class="btn btn-primary">AddDept</a></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                
+                 @if(item.Status == true)
+                            {
+                                @Html.DisplayName("Active")
+                            }
+                            else
+                            {
+                             @Html.DisplayName("InActive")
+
+                            }
+               
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="DeptEdit" asp-route-id="@item.DeptId">
+                      <i class="fa fa-pencil-square-o"></i>
+                </a> 
+               
+                <a class="btn btn-danger" asp-action="DeptDelete" asp-route-id="@item.DeptId">
+                      <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

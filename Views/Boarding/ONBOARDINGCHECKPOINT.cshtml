@@ -1,0 +1,89 @@
+﻿@model HRMS_project.Models.onCheckpoint
+
+@{
+    ViewData["Title"] = "ONBOARDINGCHECKPOINT";
+}
+<html>
+    <head>
+    
+        <link href=~/css/Login.css />
+         <script src="~/Scripts/boarding.js" asp-append-version="true"></script>
+    </head>
+    <body>
+
+<hr />
+
+         <form asp-controller="Boarding" asp-action="ONBOARDINGCHECKPOINT" method="post" class="form-horizontal" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+            <div class="col-md-4">
+                  <div class="card">
+                       <div class="card-header bg-info text-uppercase text-white">
+                    <h4>ONBOARDINGCHECKPOINT</h4>
+                </div>
+                  <div class="card-body">
+                       <form enctype="multipart/form-data" asp-action="New">
+            <div class="form-group">
+                <label asp-for="CheckpointName" class="control-label"></label>
+                <input asp-for="CheckpointName" id="check" class="form-control" />
+                <span asp-validation-for="CheckpointName" class="text-danger"></span>
+            </div>
+           
+
+            <div class="form-group">
+                <label asp-for="BUnitID" class="control-label">Businessunit</label>
+                @Html.HiddenFor(i => i.BUnitID, new { @id = "Bnid"})
+                @Html.DropDownListFor(m => m.BUnitID, (SelectList)ViewBag.bunit, "Choose a Businessunit", new { @class = "form-control",@id="abcd" })
+                   
+                <span asp-validation-for="BUnitID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeptId" class="control-label">Department</label>
+                 @Html.HiddenFor(i => i.DeptId, new { @id = "DEid"})
+                 @Html.DropDownListFor(m => m.DeptId, (SelectList)ViewBag.depts, "Choose a Department", new { @class = "form-control",@id="efgh" })
+                   
+                 <span asp-validation-for="DeptId" class="text-danger"></span>
+                  
+            </div> 
+            <div class="form-group">
+                <label asp-for="AssigneeId" class="control-label">Assignee</label>
+               
+               @Html.DropDownListFor(m => m.AssigneeId, (SelectList)ViewBag.assignees, "Choose a Assignee", new { @class = "form-control",@id="asign" })
+             
+               <span asp-validation-for="AssigneeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" id="desc" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <input type="submit" id="Buttton" value="Create" class="btn btn-primary" />
+            </div>
+            </form>
+            </div>
+              </div>
+              </div>
+</div>
+        </form>
+  
+  <div class="row">
+       <div class="col-sm-4"></div>
+        
+         <div class="col-sm-4">
+              <a asp-action="OnBoardingCheckpointUnits" asp-controller="Boarding" class="btn btn-primary">Go To OnBoardingDashboard</a>
+              
+          </div>
+          <div>
+                 <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Admin Dashboard</a>
+         </div>
+         <div class="col-sm-4"></div>
+   </div>
+ 
+    </body>
+</html>
+
+

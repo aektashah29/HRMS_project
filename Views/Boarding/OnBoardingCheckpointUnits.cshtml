@@ -1,0 +1,100 @@
+﻿@model IEnumerable<HRMS_project.Models.onCheckpoint>
+
+@{
+    ViewData["Title"] = "ONBOARDING CHECKPOINT";
+}
+
+<html>
+    <head>
+<title>OnBoardingCheckpointUnits</title>
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="~/Scripts/boarding.js" asp-append-version="true"></script>
+  <link href="~/css/bunit.css" />
+    </head>
+
+<body>
+
+     <div class="card">
+               <div class="card-header bg-danger text-uppercase text-white">
+                    <h4 class="text-center"> OnBoardingCheckpointUnits </h4>
+                    <form asp-controller="Boarding" asp-action="OnBoardingCheckpointUnits" method="get">
+                     <input type="text" placeholder="Search.." name="search">
+                     <input type="submit" value="Search" class="btn btn-primary">
+              </form>
+            <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Admin Dashboard</a>
+              </div>
+     <div class="card-body">
+<div id="maintable">
+<form asp-controller="OffBoarding" asp-action="Copy" method="post">
+<table class="table">
+    <thead>
+        <tr>    
+            <th>
+                
+               <input type="checkbox" id="checkbox"/>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckpointName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Businessunit)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssigneeName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th><a asp-action="ONBOARDINGCHECKPOINT" asp-controller="Boarding" class="btn btn-primary">Add</a></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                
+            <input id="@item.OnCheckpointId" type="checkbox" name="id[]" value="@item.OnCheckpointId"/>
+
+            </td>
+            <td id="checkname">
+                @Html.DisplayFor(modelItem => item.CheckpointName)
+            </td>
+              <td id="checkunit">
+                @Html.DisplayFor(modelItem => item.Businessunit)
+            </td>
+              <td id="checkdept">
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+              <td id="checkasign">
+                @Html.DisplayFor(modelItem => item.AssigneeName)
+            </td>
+             <td id="checkdisc">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="ONEdit" asp-route-id="@item.OnCheckpointId">
+                      <i class="fa fa-pencil-square-o"></i>
+                </a> 
+               
+                <a class="btn btn-danger" asp-action="ONDelete" asp-route-id="@item.OnCheckpointId">
+                      <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+  }
+  <input type="submit" id="checkid" value="copy" />
+    </tbody>
+</table>
+</form>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

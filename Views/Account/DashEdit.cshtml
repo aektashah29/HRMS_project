@@ -1,0 +1,108 @@
+﻿@model HRMS.Models.RequestModel
+
+@{
+    ViewData["Title"] = "DashEdit";
+}
+<html>
+    <head>
+        <title>
+          
+        </title>
+    </head>
+    <body>
+
+<hr />
+<form asp-action="DashEdit" method="post">
+ <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+     <div class="row">
+         <div class="col-sm-4"></div>
+      <div class="col-md-4">
+           <div class="card">
+                <div class="card-header bg-secondary text-uppercase text-white">
+                    <h4>DashEdit</h4>
+                </div>
+                 <div class="card-body">
+                 <form enctype="multipart/form-data" asp-action="New">
+            <input type="hidden" asp-for="EmpID" />
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doj" class="control-label"></label>
+                <input asp-for="Doj" class="form-control" />
+                <span asp-validation-for="Doj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                 <label asp-for="BUnitID" class="control-label"></label>
+            
+               
+                <select asp-for="BUnitID" class="form-control" id="abcd"  asp-items="@ViewBag.bunit">
+                      <option value="Select Businessunit">Select Businessunit</option>
+                    </select>
+                  <span asp-validation-for="BUnitID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+               <label asp-for="DeptId" class="control-label"></label>
+              
+                <select asp-for="DeptId" id="efgh" class="form-control" asp-items="@ViewBag.depts">
+                       <option>Select Department</option>
+                       </select>
+                      <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                   <label asp-for="SDeptID" class="control-label"></label>
+              
+                <select asp-for="SDeptID" id="efgh" class="form-control" asp-items="@ViewBag.sdept">
+                       <option>Select SubDepartment</option>
+                       </select>
+                      <span asp-validation-for="SDeptID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Designation" class="control-label"></label>
+                <input asp-for="Designation" class="form-control" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label asp-for="RMID" class="control-label"></label>
+              
+                <select asp-for="RMID" id="efgh" class="form-control" asp-items="@ViewBag.rm">
+                       <option>Select Reportmanager</option>
+                       </select>
+                      <span asp-validation-for="RMID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" id="dashedit" />
+            </div>
+            </form>
+            </div>
+            </div>
+              </div>
+</div>
+        </form>
+  <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+          <a asp-action="OnDashboard">Back to List</a>
+      </div>
+      <div class="col-sm-4"></div>
+  </div>
+ </body>
+</html>
+

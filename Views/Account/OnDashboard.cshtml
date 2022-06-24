@@ -1,0 +1,124 @@
+﻿@model IEnumerable<HRMS.Models.RequestModel>
+
+@{
+    ViewData["Title"] = "OnBoardingRequest";
+}
+
+
+
+<html>
+    <head>
+        <title>
+            OnDashboard
+        </title>
+        <link href="~/css/image.css" rel="stylesheet" />
+        <script src="~/Scripts/table.js" asp-append-version="true"></script>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+  <div class="card">
+       <div class="card-header bg-danger text-uppercase text-white">
+        <div>
+                <label class="control-label">Total Record</label>
+                 <input class="form-control" id="totalrow" />
+         </div><br />
+         <div>
+               <form asp-controller="Account" asp-action="OnDashboard" method="get">
+                     <input type="text" placeholder="Search.." name="search">
+                     <input type="submit" value="Search" class="btn btn-primary">
+               </form>
+       
+       </div>
+     </div>
+       <div class="card-body">
+<table class="table" id=secondtable>
+   
+    <thead>
+        <tr>
+             
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doj)
+            </th>
+            <th>
+                @Html.DisplayName("Bunit")
+            </th>
+            <th>
+                @Html.DisplayName("Dept")
+            </th>
+            <th>
+                @Html.DisplayName("Sdept")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayName("RM")
+            </th>
+            <th>
+                 <a asp-action="OnBoardRequest" asp-controller="Account" class="btn btn-primary">Add</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Businessunit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubDepartment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportingManager)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="DashEdit" asp-route-id="@item.EmpID">
+                      <i class="fa fa-pencil-square-o"></i>
+                </a>
+             </td>  
+             <td>
+                   <a class="btn btn-danger" asp-action="DashDelete" asp-route-id="@item.EmpID">
+                      <i class="fa fa-trash"></i>
+                </a>
+           </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+    </body>
+</html>

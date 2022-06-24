@@ -1,0 +1,129 @@
+﻿@using HRMS_project
+@model IEnumerable<HRMS_project.Models.CreateRole>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager;
+@{
+ViewData["Title"] = "Admin";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+<link rel="stylesheet" href="~/css/image.css" />
+</head>
+<body>
+<div class="container-fluid">
+<div class="row flex-nowrap">
+@try
+{
+@if (await userManager.IsInRoleAsync(userManager.GetUserAsync(User).Result, "Admin")||
+await userManager.IsInRoleAsync(userManager.GetUserAsync(User).Result, "HR"))
+{
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+<a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none" id="text-admin">
+<span class="fs-5 d-none d-sm-inline">Admin Panel</span>
+</a>
+<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                <li class="nav-item">
+                                    <a asp-action="Dashboard" asp-controller="Admin" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Business Unit</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="DepartmentUnits" asp-controller="Admin" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Department</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="OnBoardingCheckpointUnits" asp-controller="Boarding" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ONBOARDING CHECKPOINT</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="OffBoardingcheckpointUnits" asp-controller="OffBoarding" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">OffBoardingcheckpoint</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="OnDashboard" asp-controller="Account" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">OnBoardingRequest</span>
+                                    </a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a asp-action="CreateRole" asp-controller="Account" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">CreateRole</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+<hr>
+</div> </div>
+}
+else
+{
+<div class="text-center">
+<p> Only admin can access this page!!!!</p>
+</div>
+}
+}
+catch
+{
+<div class="text-center">
+<p>
+Unauthorized Access!!!!
+</p>
+</div>
+}
+<div class="col-sm-9">
+   <div class="card">
+              <div class="card-header bg-secondary text-uppercase text-white">
+                    <h4 class="text-center"> Roles </h4>
+               
+               
+                </div>
+              
+                  <div class="card-body">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th><a asp-action="CreateRole" asp-controller="Account" class="btn btn-primary">Add</a></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+              <td>
+         @Html.DisplayFor(modelItem => item.RoleName)
+                
+            </td>
+            <td>
+               
+                <a class="btn btn-primary" asp-action="RoleEdit" asp-route-id="@item.Id">
+                   <i class="fa fa-pencil-square-o"></i>
+                </a> 
+               
+                <a class="btn btn-danger" asp-action="RoleDelete" asp-route-id="@item.Id">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+

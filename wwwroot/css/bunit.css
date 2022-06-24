@@ -1,0 +1,42 @@
+﻿.input-group {
+    width : 20%;
+}
+
+#status {
+    width: 600px;
+}
+#edit {
+    margin-left : 300px;
+}
+#view {
+    margin-left: 300px;
+}
+
+#none {
+    display: none;
+}
+
+#display {
+    display : none;
+}
+#update {
+    display: none;
+}
+#delete {
+    display: none;
+}
+#search-addon {
+    position: relative;
+}
+.form-control {
+width : 8%;
+display: none;
+}
+body {
+}
+.add {
+    display: inline;
+    font-size: 30px;
+    padding-right: 2.5%;
+    
+}

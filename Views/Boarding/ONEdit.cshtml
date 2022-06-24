@@ -1,0 +1,94 @@
+﻿@model HRMS_project.Models.onCheckpoint
+
+@{
+    ViewData["Title"] = "ONEdit";
+}
+
+<h1>ONEdit</h1>
+<html>
+    <head>
+      <title>ONEdit</title>
+      <script src="~/Scripts/edit.js" asp-append-version="true"></script>
+    </head>
+    <body>
+
+<hr />
+
+     
+      <form asp-action="ONEdit" method="post">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="row">
+                 <div class="col-sm-4"></div>
+             <div class="col-md-4">
+                    <div class="card">
+                         <div class="card-header bg-secondary text-uppercase text-white">
+                    <h4>ONEdit</h4>
+                     
+                </div>
+                 <div class="card-body">
+                 <form enctype="multipart/form-data" asp-action="New">
+           <input type="hidden" asp-for="OnCheckpointId" />
+            <div class="form-group">
+                <label asp-for="CheckpointName" class="control-label"></label>
+
+                <input asp-for="CheckpointName" id="point" class="form-control" />
+                <span asp-validation-for="CheckpointName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BUnitID" class="control-label"></label>
+            
+               
+                <select asp-for="BUnitID" class="form-control" id="abcd"  asp-items="@ViewBag.bunit">
+                      <option value="Select Businessunit">Select Businessunit</option>
+                    </select>
+                  <span asp-validation-for="BUnitID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeptId" class="control-label"></label>
+              
+                <select asp-for="DeptId" id="efgh" class="form-control" asp-items="@ViewBag.depts">
+                       <option>Select Department</option>
+                       </select>
+                      <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssigneeId" class="control-label"></label>
+             
+               
+               <select asp-for="AssigneeId"  id="asign" class="form-control" asp-items="@ViewBag.assignees">
+                       <option>Select Assignee</option>
+                       
+                       </select>
+                         <span asp-validation-for="AssigneeId" class="text-danger"></span>
+              </div>    
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" id="desname" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" id="editsubmit" />
+            </div>
+            </form>
+            </div>
+                  </div>
+             </div>
+</div>
+             </form>
+          
+   <div class="row">
+       <div class="col-sm-4"></div>
+       <div class="col-sm-4">
+            <a asp-action="OnBoardingCheckpointUnits">Back to List</a>
+       </div>
+       <div class="col-sm-4"></div>
+  
+   </div>
+
+
+</body>
+</html>
+
+

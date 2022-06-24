@@ -1,0 +1,70 @@
+﻿@model HRMS_project.Models.Dept
+@{
+    ViewData["Title"] = "DEPARTMENTS";
+}
+
+<html>
+<head>
+    <title>DEPARTMENTS</title>
+   
+</head>
+
+<body>
+
+     <hr />
+    <form asp-controller="Admin" asp-action="DEPARTMENTS" method="post" class="form-horizontal" role="form">
+        <div class="col-sm-6 mx-auto py-2">
+            <div class="card">
+                <div class="card-header bg-danger text-uppercase text-white">
+                    <h4> Add new DEPARTMENTS </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+
+
+                            <div class="form-group me-2">
+                                <label asp-for="DeptName" class="control-label">Department Name</label>
+                                <input asp-for="DeptName" id="depart" class="form-control" />
+                                <span asp-validation-for="DeptName" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                 @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                                  {
+                                    new SelectListItem() { Text = "Active", Value = "True" },
+                                    new SelectListItem() { Text = "InActive", Value = "False"}
+                                     }, "Select Status", new { @id = "select", @class="form-control" })
+                                
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                     
+                              <div class="form-group d-flex justify-content-center">
+                                <input type="submit" id="btn" value="Save" class="btn btn-primary" />
+                                </div>
+                                <div>
+                                  <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Admin Dashboard</a>
+                            </div>
+                       </div>
+                              <div class="col-sm-3"></div>
+                   </div>
+                </div>
+            </div>
+        </div>
+   </form>
+    <div class="row">
+       <div class="col-sm-4"></div>
+        
+         <div class="col-sm-4">
+              <a asp-action="DepartmentUnits" asp-controller="Admin" class="btn btn-primary">Go To DeptDashboard</a>
+         </div>
+         <div class="col-sm-4"></div>
+   </div>
+    </body>
+    </html>
+
+
+

@@ -1,0 +1,60 @@
+﻿@model HRMS_project.Models.Bunit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<html>
+    <head>
+ 
+    </head>
+    <body>
+
+    </body>
+</html>
+
+<hr />
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-secondary text-uppercase text-white">
+                    <h4>Edit</h4>
+                </div>
+                 <div class="card-body">
+                       <form enctype="multipart/form-data" asp-action="New">
+            <div class="form-group">
+                 <input type="hidden" asp-for="BUnitID" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Businessunit" class="control-label"></label>
+                <input asp-for="Businessunit" class="form-control" />
+                <span asp-validation-for="Businessunit" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Bunit_status" /> @Html.DisplayNameFor(model => model.Bunit_status)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+            </form>
+            </div>
+
+                 </div>
+              </div>
+</div>
+        </form>
+  <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+ <a asp-action="Dashboard">Back to List</a>
+      </div>
+      <div class="col-sm-4"></div>
+  </div>
+
+
+

@@ -1,0 +1,47 @@
+﻿@model HRMS_project.Models.CreateRole
+
+@{
+    ViewData["Title"] = "CreateRole";
+}
+
+<hr />
+
+  <form asp-action="CreateRole" asp-controller="Account">
+     <div asp-validation-summary="ModelOnly" class="text-danger" method="post"></div>
+     
+          <div class="row">
+              <div class="col-sm-4"></div>
+         <div class="col-md-4">
+             
+              <div class="card">
+                  <div class="card-header bg-info text-uppercase text-white">
+                    <h4>CreateRole</h4>
+                </div>
+                  <div class="card-body">
+                 <form enctype="multipart/form-data" asp-action="New">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">User</label>
+                    @Html.DropDownList("UserName", (SelectList)ViewBag.users, "Choose a User", new { @id="user" ,@class = "form-control"})
+                   
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+            
+                  @Html.DropDownList("RoleName", (SelectList)ViewBag.roles, "Choose a roles", new { @id="roles" ,@class = "form-control"})               
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="rolebtn" value="Create" class="btn btn-primary" />
+                  <input type="submit" asp-action="Index" asp-controller="Admin" value="Admin dashboard" class="btn btn-primary" />
+            </div>
+            </form>
+            </div>
+            </div>
+          </div>
+       </div>
+   </form>
+   
+
+
+

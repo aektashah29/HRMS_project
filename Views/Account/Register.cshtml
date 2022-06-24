@@ -1,0 +1,134 @@
+﻿@model HRMS_project.Models.Register
+
+@{
+    ViewData["Title"] = "UserRegister";
+}
+
+<html>
+<head>
+    <title>Register</title>
+   <script src="~/Scripts/Script.js" asp-append-version="true"></script>
+</head>
+
+<body>
+    <hr />
+
+    <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
+        <div class="col-sm-10 mx-auto py-4">
+            <div class="card">
+                <div class="card-header bg-primary text-uppercase text-white">
+                    <h4>Add New </h4>
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" asp-action="New">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" id="UserName" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Gender" class="control-label"></label>
+
+                                    <input asp-for="Gender" type="radio" name="Gender" value="M" />Male
+                                    <input asp-for="Gender" type="radio" name="Gender" id="Gender" value="F" />Female
+
+                                    <span asp-validation-for="Gender" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" id="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="CountryId" class="control-label"></label>
+                                    @Html.HiddenFor(m => m.CountryId, new { @id = "cntid" })
+                                    @Html.DropDownListFor(m => m.CountryId, (SelectList)ViewBag.countries, "Choose a Country", new {@id="ContId", @class = "form-control" })
+                                  
+                                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="StateId" class="control-label"></label>
+                                    @Html.HiddenFor(m => m.StateId, new { @id = "stid" })
+                                       @Html.DropDownListFor(m => m.StateId,Enumerable.Empty<SelectListItem>(), "Choose a State", new {@id="stateid", @class = "form-control" })
+                                  
+                                    <span asp-validation-for="StateId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="cityId" class="control-label"></label>
+                                    @Html.HiddenFor(m => m.cityId, new { @id = "ctid" })
+                                      @Html.DropDownListFor(m => m.cityId, Enumerable.Empty<SelectListItem>(),"Choose a City", new {@id="CityId", @class = "form-control" })
+                                
+                                    <span asp-validation-for="cityId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ZipId" class="control-label"></label>
+                                    @Html.HiddenFor(m => m.ZipId, new { @id = "pid" })
+                                      @Html.DropDownListFor(m => m.ZipId,Enumerable.Empty<SelectListItem>(), "Choose a Postalcode", new {@id="PCId", @class = "form-control" })
+                                   
+                                    <span asp-validation-for="ZipId" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" id="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" id="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                                    <input asp-for="ConfirmPassword" id="CPwd" class="form-control" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" id="btnsubmit" value="Create" class="btn btn-sm btn-primary rounded--0 text-uppercase" />
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-primary">User Dashboard</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
+

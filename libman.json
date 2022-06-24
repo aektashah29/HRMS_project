@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@5.1.3",
+      "destination": "wwwroot/twitter-bootstrap/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/jquery-ajax-unobtrusive/"
+    },
+    {
+      "library": "datatable@2.0.2",
+      "destination": "wwwroot/datatable/"
+    }
+  ]
+}

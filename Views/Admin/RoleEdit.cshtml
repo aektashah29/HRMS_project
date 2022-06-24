@@ -1,0 +1,68 @@
+﻿@model HRMS_project.Models.CreateRole
+
+@{
+    ViewData["Title"] = "RoleEdit";
+}
+<html>
+    <head>
+        <title>
+RoleEdit
+        </title>
+
+    </head>
+    <body>
+
+<hr />
+
+        <form asp-action="RoleEdit">
+           
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="row">
+                 <div class="col-sm-4"></div>
+           <div class="col-md-4">
+                 <div class="card">
+                     <div class="card-header bg-secondary text-uppercase text-white">
+                    <h4>RoleEdit</h4>
+                </div>
+                   <div class="card-body">
+                       <form enctype="multipart/form-data" asp-action="New">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">User</label>
+                   <select asp-for="UserName" id="efgh" class="form-control" asp-items="@ViewBag.users">
+                       <option>Select UserName</option>
+                       </select>  
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                 <label asp-for="RoleName" class="control-label"></label>
+            
+                  <select asp-for="RoleName" id="efgh" class="form-control" asp-items="@ViewBag.roles">
+                       <option>Select RoleName</option>
+                       </select>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+            </form>
+            </div>
+             </div>
+             
+</div>
+
+</div>
+        </form>
+        <div class="row">
+            <div class="col-sm-4"> </div>
+                <div class="col-sm-4">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+           
+              <div class="col-sm-4"></div>
+        </div>
+     
+    
+     
+
+ </body>
+</html>
